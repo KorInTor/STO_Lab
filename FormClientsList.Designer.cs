@@ -48,10 +48,10 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.client_TableBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.client_TableDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumnPol = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnPol = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.client_TableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.client_TableBindingNavigator)).BeginInit();
@@ -228,6 +228,28 @@
             this.client_TableDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.client_DataGridView_CellFormatting);
             this.client_TableDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.client_TableDataGridView_DataError);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Client_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Full_Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Full_Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Phone_Number";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Phone_Number";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 150;
+            // 
             // dataGridViewTextBoxColumnPol
             // 
             this.dataGridViewTextBoxColumnPol.DataPropertyName = "Gender";
@@ -238,25 +260,6 @@
             this.dataGridViewTextBoxColumnPol.Name = "dataGridViewTextBoxColumnPol";
             this.dataGridViewTextBoxColumnPol.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumnPol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Phone_Number";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Phone_Number";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Full_Name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Full_Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Client_ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Client_ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // FormClientsList
             // 
