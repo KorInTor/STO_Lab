@@ -61,6 +61,7 @@ namespace STO_Lab {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -72,6 +73,9 @@ namespace STO_Lab {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -110,6 +114,7 @@ namespace STO_Lab {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -231,6 +236,7 @@ namespace STO_Lab {
         public override global::System.Data.DataSet Clone() {
             STODataSet cln = ((STODataSet)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -366,15 +372,15 @@ namespace STO_Lab {
             this.Namespace = "http://tempuri.org/STODataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableAuto_Table = new Auto_TableDataTable();
+            this.tableAuto_Table = new Auto_TableDataTable(false);
             base.Tables.Add(this.tableAuto_Table);
             this.tableClient_Table = new Client_TableDataTable();
             base.Tables.Add(this.tableClient_Table);
             this.tableEmployee_Table = new Employee_TableDataTable();
             base.Tables.Add(this.tableEmployee_Table);
-            this.tableOrder_Employee_Rel_Table = new Order_Employee_Rel_TableDataTable();
+            this.tableOrder_Employee_Rel_Table = new Order_Employee_Rel_TableDataTable(false);
             base.Tables.Add(this.tableOrder_Employee_Rel_Table);
-            this.tableOrder_Table = new Order_TableDataTable();
+            this.tableOrder_Table = new Order_TableDataTable(false);
             base.Tables.Add(this.tableOrder_Table);
             this.tableParts_Table = new Parts_TableDataTable();
             base.Tables.Add(this.tableParts_Table);
@@ -503,6 +509,14 @@ namespace STO_Lab {
             return type;
         }
         
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitExpressions() {
+            this.Auto_Table.About_CarColumn.Expression = "Brand+\' \'+Model";
+            this.Order_Employee_Rel_Table.EmployeeInfoColumn.Expression = "Parent(FK_Order_Employee_Rel_Table_Employee_Table).Full_Name";
+            this.Order_Table.Car_InfoColumn.Expression = "Parent(FK_Order_Table_Auto_Table).About_Car";
+        }
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void Auto_TableRowChangeEventHandler(object sender, Auto_TableRowChangeEvent e);
         
@@ -543,12 +557,23 @@ namespace STO_Lab {
             
             private global::System.Data.DataColumn columnGov_Name;
             
+            private global::System.Data.DataColumn columnAbout_Car;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Auto_TableDataTable() {
+            public Auto_TableDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Auto_TableDataTable(bool initExpressions) {
                 this.TableName = "Auto_Table";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -626,6 +651,14 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn About_CarColumn {
+                get {
+                    return this.columnAbout_Car;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -661,6 +694,26 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Auto_TableRow AddAuto_TableRow(string VIN_Code, Client_TableRow parentClient_TableRowByFK_Auto_Table_Client_Table, string Brand, string Model, string Gov_Number, string Gov_Name, string About_Car) {
+                Auto_TableRow rowAuto_TableRow = ((Auto_TableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        VIN_Code,
+                        null,
+                        Brand,
+                        Model,
+                        Gov_Number,
+                        Gov_Name,
+                        About_Car};
+                if ((parentClient_TableRowByFK_Auto_Table_Client_Table != null)) {
+                    columnValuesArray[1] = parentClient_TableRowByFK_Auto_Table_Client_Table[0];
+                }
+                rowAuto_TableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAuto_TableRow);
+                return rowAuto_TableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Auto_TableRow AddAuto_TableRow(string VIN_Code, Client_TableRow parentClient_TableRowByFK_Auto_Table_Client_Table, string Brand, string Model, string Gov_Number, string Gov_Name) {
                 Auto_TableRow rowAuto_TableRow = ((Auto_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -669,7 +722,8 @@ namespace STO_Lab {
                         Brand,
                         Model,
                         Gov_Number,
-                        Gov_Name};
+                        Gov_Name,
+                        null};
                 if ((parentClient_TableRowByFK_Auto_Table_Client_Table != null)) {
                     columnValuesArray[1] = parentClient_TableRowByFK_Auto_Table_Client_Table[0];
                 }
@@ -708,6 +762,7 @@ namespace STO_Lab {
                 this.columnModel = base.Columns["Model"];
                 this.columnGov_Number = base.Columns["Gov_Number"];
                 this.columnGov_Name = base.Columns["Gov_Name"];
+                this.columnAbout_Car = base.Columns["About_Car"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -725,6 +780,8 @@ namespace STO_Lab {
                 base.Columns.Add(this.columnGov_Number);
                 this.columnGov_Name = new global::System.Data.DataColumn("Gov_Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGov_Name);
+                this.columnAbout_Car = new global::System.Data.DataColumn("About_Car", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAbout_Car);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnVIN_Code}, true));
                 this.columnVIN_Code.AllowDBNull = false;
@@ -739,6 +796,7 @@ namespace STO_Lab {
                 this.columnGov_Number.MaxLength = 10;
                 this.columnGov_Name.AllowDBNull = false;
                 this.columnGov_Name.MaxLength = 2;
+                this.columnAbout_Car.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -757,6 +815,12 @@ namespace STO_Lab {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(Auto_TableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitExpressions() {
+                this.About_CarColumn.Expression = "Brand+\' \'+Model";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1525,12 +1589,23 @@ namespace STO_Lab {
             
             private global::System.Data.DataColumn columnStart_Date;
             
+            private global::System.Data.DataColumn columnEmployeeInfo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Order_Employee_Rel_TableDataTable() {
+            public Order_Employee_Rel_TableDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Order_Employee_Rel_TableDataTable(bool initExpressions) {
                 this.TableName = "Order_Employee_Rel_Table";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -1584,6 +1659,14 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EmployeeInfoColumn {
+                get {
+                    return this.columnEmployeeInfo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1619,12 +1702,33 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Order_Employee_Rel_TableRow AddOrder_Employee_Rel_TableRow(Employee_TableRow parentEmployee_TableRowByFK_Order_Employee_Rel_Table_Employee_Table, Order_TableRow parentOrder_TableRowByFK_Order_Employee_Rel_Table_Order_Tabel, System.DateTime Start_Date, string EmployeeInfo) {
+                Order_Employee_Rel_TableRow rowOrder_Employee_Rel_TableRow = ((Order_Employee_Rel_TableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        Start_Date,
+                        EmployeeInfo};
+                if ((parentEmployee_TableRowByFK_Order_Employee_Rel_Table_Employee_Table != null)) {
+                    columnValuesArray[0] = parentEmployee_TableRowByFK_Order_Employee_Rel_Table_Employee_Table[0];
+                }
+                if ((parentOrder_TableRowByFK_Order_Employee_Rel_Table_Order_Tabel != null)) {
+                    columnValuesArray[1] = parentOrder_TableRowByFK_Order_Employee_Rel_Table_Order_Tabel[0];
+                }
+                rowOrder_Employee_Rel_TableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOrder_Employee_Rel_TableRow);
+                return rowOrder_Employee_Rel_TableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Order_Employee_Rel_TableRow AddOrder_Employee_Rel_TableRow(Employee_TableRow parentEmployee_TableRowByFK_Order_Employee_Rel_Table_Employee_Table, Order_TableRow parentOrder_TableRowByFK_Order_Employee_Rel_Table_Order_Tabel, System.DateTime Start_Date) {
                 Order_Employee_Rel_TableRow rowOrder_Employee_Rel_TableRow = ((Order_Employee_Rel_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        Start_Date};
+                        Start_Date,
+                        null};
                 if ((parentEmployee_TableRowByFK_Order_Employee_Rel_Table_Employee_Table != null)) {
                     columnValuesArray[0] = parentEmployee_TableRowByFK_Order_Employee_Rel_Table_Employee_Table[0];
                 }
@@ -1664,6 +1768,7 @@ namespace STO_Lab {
                 this.columnEmployee_ID = base.Columns["Employee_ID"];
                 this.columnOrder_ID = base.Columns["Order_ID"];
                 this.columnStart_Date = base.Columns["Start_Date"];
+                this.columnEmployeeInfo = base.Columns["EmployeeInfo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1675,12 +1780,15 @@ namespace STO_Lab {
                 base.Columns.Add(this.columnOrder_ID);
                 this.columnStart_Date = new global::System.Data.DataColumn("Start_Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStart_Date);
+                this.columnEmployeeInfo = new global::System.Data.DataColumn("EmployeeInfo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmployeeInfo);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEmployee_ID,
                                 this.columnOrder_ID}, true));
                 this.columnEmployee_ID.AllowDBNull = false;
                 this.columnOrder_ID.AllowDBNull = false;
                 this.columnStart_Date.AllowDBNull = false;
+                this.columnEmployeeInfo.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1699,6 +1807,12 @@ namespace STO_Lab {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(Order_Employee_Rel_TableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitExpressions() {
+                this.EmployeeInfoColumn.Expression = "Parent(FK_Order_Employee_Rel_Table_Employee_Table).Full_Name";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1828,12 +1942,23 @@ namespace STO_Lab {
             
             private global::System.Data.DataColumn columnStatus;
             
+            private global::System.Data.DataColumn columnCar_Info;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Order_TableDataTable() {
+            public Order_TableDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Order_TableDataTable(bool initExpressions) {
                 this.TableName = "Order_Table";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -1919,6 +2044,14 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Car_InfoColumn {
+                get {
+                    return this.columnCar_Info;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1954,6 +2087,27 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Order_TableRow AddOrder_TableRow(string Defects_List, string Fixed_Defects_List, decimal Amount_spent, System.DateTime Date_Issued, Auto_TableRow parentAuto_TableRowByFK_Order_Table_Auto_Table, bool Status, string Car_Info) {
+                Order_TableRow rowOrder_TableRow = ((Order_TableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Defects_List,
+                        Fixed_Defects_List,
+                        Amount_spent,
+                        Date_Issued,
+                        null,
+                        Status,
+                        Car_Info};
+                if ((parentAuto_TableRowByFK_Order_Table_Auto_Table != null)) {
+                    columnValuesArray[5] = parentAuto_TableRowByFK_Order_Table_Auto_Table[0];
+                }
+                rowOrder_TableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowOrder_TableRow);
+                return rowOrder_TableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Order_TableRow AddOrder_TableRow(string Defects_List, string Fixed_Defects_List, decimal Amount_spent, System.DateTime Date_Issued, Auto_TableRow parentAuto_TableRowByFK_Order_Table_Auto_Table, bool Status) {
                 Order_TableRow rowOrder_TableRow = ((Order_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1963,7 +2117,8 @@ namespace STO_Lab {
                         Amount_spent,
                         Date_Issued,
                         null,
-                        Status};
+                        Status,
+                        null};
                 if ((parentAuto_TableRowByFK_Order_Table_Auto_Table != null)) {
                     columnValuesArray[5] = parentAuto_TableRowByFK_Order_Table_Auto_Table[0];
                 }
@@ -2003,6 +2158,7 @@ namespace STO_Lab {
                 this.columnDate_Issued = base.Columns["Date_Issued"];
                 this.columnAuto_VINcode = base.Columns["Auto_VINcode"];
                 this.columnStatus = base.Columns["Status"];
+                this.columnCar_Info = base.Columns["Car_Info"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2022,6 +2178,8 @@ namespace STO_Lab {
                 base.Columns.Add(this.columnAuto_VINcode);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.columnCar_Info = new global::System.Data.DataColumn("Car_Info", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCar_Info);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnOrder_ID}, true));
                 this.columnOrder_ID.AutoIncrement = true;
@@ -2039,6 +2197,7 @@ namespace STO_Lab {
                 this.columnAuto_VINcode.AllowDBNull = false;
                 this.columnAuto_VINcode.MaxLength = 17;
                 this.columnStatus.AllowDBNull = false;
+                this.columnCar_Info.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2057,6 +2216,12 @@ namespace STO_Lab {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(Order_TableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitExpressions() {
+                this.Car_InfoColumn.Expression = "Parent(FK_Order_Table_Auto_Table).About_Car";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2882,6 +3047,22 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string About_Car {
+                get {
+                    try {
+                        return ((string)(this[this.tableAuto_Table.About_CarColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'About_Car\' в таблице \'Auto_Table\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAuto_Table.About_CarColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Client_TableRow Client_TableRow {
                 get {
                     return ((Client_TableRow)(this.GetParentRow(this.Table.ParentRelations["FK_Auto_Table_Client_Table"])));
@@ -2889,6 +3070,18 @@ namespace STO_Lab {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Auto_Table_Client_Table"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAbout_CarNull() {
+                return this.IsNull(this.tableAuto_Table.About_CarColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAbout_CarNull() {
+                this[this.tableAuto_Table.About_CarColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3148,6 +3341,23 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string EmployeeInfo {
+                get {
+                    try {
+                        return ((string)(this[this.tableOrder_Employee_Rel_Table.EmployeeInfoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'EmployeeInfo\' в таблице \'Order_Employee_Rel_Table\' равно DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableOrder_Employee_Rel_Table.EmployeeInfoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Employee_TableRow Employee_TableRow {
                 get {
                     return ((Employee_TableRow)(this.GetParentRow(this.Table.ParentRelations["FK_Order_Employee_Rel_Table_Employee_Table"])));
@@ -3166,6 +3376,18 @@ namespace STO_Lab {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Order_Employee_Rel_Table_Order_Tabel"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEmployeeInfoNull() {
+                return this.IsNull(this.tableOrder_Employee_Rel_Table.EmployeeInfoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEmployeeInfoNull() {
+                this[this.tableOrder_Employee_Rel_Table.EmployeeInfoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3262,6 +3484,22 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Car_Info {
+                get {
+                    try {
+                        return ((string)(this[this.tableOrder_Table.Car_InfoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Car_Info\' в таблице \'Order_Table\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOrder_Table.Car_InfoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Auto_TableRow Auto_TableRow {
                 get {
                     return ((Auto_TableRow)(this.GetParentRow(this.Table.ParentRelations["FK_Order_Table_Auto_Table"])));
@@ -3269,6 +3507,18 @@ namespace STO_Lab {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Order_Table_Auto_Table"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCar_InfoNull() {
+                return this.IsNull(this.tableOrder_Table.Car_InfoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCar_InfoNull() {
+                this[this.tableOrder_Table.Car_InfoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3903,7 +4153,7 @@ SELECT VIN_Code, Client_ID, Brand, Model, Gov_Number, Gov_Name FROM Auto_Table W
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual STODataSet.Auto_TableDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            STODataSet.Auto_TableDataTable dataTable = new STODataSet.Auto_TableDataTable();
+            STODataSet.Auto_TableDataTable dataTable = new STODataSet.Auto_TableDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5074,7 +5324,7 @@ SELECT Employee_ID, Order_ID, Start_Date FROM Order_Employee_Rel_Table WHERE (Em
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual STODataSet.Order_Employee_Rel_TableDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            STODataSet.Order_Employee_Rel_TableDataTable dataTable = new STODataSet.Order_Employee_Rel_TableDataTable();
+            STODataSet.Order_Employee_Rel_TableDataTable dataTable = new STODataSet.Order_Employee_Rel_TableDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5400,7 +5650,7 @@ SELECT Order_ID, Defects_List, Fixed_Defects_List, Amount_spent, Date_Issued, Au
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual STODataSet.Order_TableDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            STODataSet.Order_TableDataTable dataTable = new STODataSet.Order_TableDataTable();
+            STODataSet.Order_TableDataTable dataTable = new STODataSet.Order_TableDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

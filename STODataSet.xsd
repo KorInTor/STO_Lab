@@ -481,6 +481,7 @@ SELECT Part_ID, Order_ID, Quantity FROM Used_Parts_Table WHERE (Order_ID = @Orde
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="About_Car" msdata:ReadOnly="true" msdata:Expression="Brand+' '+Model" msprop:Generator_UserColumnName="About_Car" msprop:Generator_ColumnPropNameInTable="About_CarColumn" msprop:Generator_ColumnPropNameInRow="About_Car" msprop:Generator_ColumnVarNameInTable="columnAbout_Car" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -496,7 +497,7 @@ SELECT Part_ID, Order_ID, Quantity FROM Used_Parts_Table WHERE (Order_ID = @Orde
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Phone_Number" msprop:Generator_ColumnPropNameInTable="Phone_NumberColumn" msprop:Generator_ColumnPropNameInRow="Phone_Number" msprop:Generator_UserColumnName="Phone_Number" msprop:Generator_ColumnVarNameInTable="columnPhone_Number" type="xs:decimal" />
-              <xs:element name="Gender" msprop:Generator_ColumnPropNameInRow="Gender" msprop:Generator_ColumnPropNameInTable="GenderColumn" msprop:Generator_ColumnVarNameInTable="columnGender" msprop:Generator_UserColumnName="Gender" minOccurs="0">
+              <xs:element name="Gender" msprop:Generator_ColumnPropNameInTable="GenderColumn" msprop:Generator_ColumnPropNameInRow="Gender" msprop:Generator_UserColumnName="Gender" msprop:Generator_ColumnVarNameInTable="columnGender" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="6" />
@@ -542,6 +543,7 @@ SELECT Part_ID, Order_ID, Quantity FROM Used_Parts_Table WHERE (Order_ID = @Orde
               <xs:element name="Employee_ID" msprop:Generator_ColumnPropNameInTable="Employee_IDColumn" msprop:Generator_ColumnPropNameInRow="Employee_ID" msprop:Generator_UserColumnName="Employee_ID" msprop:Generator_ColumnVarNameInTable="columnEmployee_ID" type="xs:int" />
               <xs:element name="Order_ID" msprop:Generator_ColumnPropNameInTable="Order_IDColumn" msprop:Generator_ColumnPropNameInRow="Order_ID" msprop:Generator_UserColumnName="Order_ID" msprop:Generator_ColumnVarNameInTable="columnOrder_ID" type="xs:int" />
               <xs:element name="Start_Date" msprop:Generator_ColumnPropNameInTable="Start_DateColumn" msprop:Generator_ColumnPropNameInRow="Start_Date" msprop:Generator_UserColumnName="Start_Date" msprop:Generator_ColumnVarNameInTable="columnStart_Date" type="xs:dateTime" />
+              <xs:element name="EmployeeInfo" msdata:ReadOnly="true" msdata:Expression="Parent(FK_Order_Employee_Rel_Table_Employee_Table).Full_Name" msprop:Generator_ColumnPropNameInRow="EmployeeInfo" msprop:Generator_ColumnPropNameInTable="EmployeeInfoColumn" msprop:Generator_ColumnVarNameInTable="columnEmployeeInfo" msprop:Generator_UserColumnName="EmployeeInfo" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -573,6 +575,7 @@ SELECT Part_ID, Order_ID, Quantity FROM Used_Parts_Table WHERE (Order_ID = @Orde
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_UserColumnName="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" type="xs:boolean" />
+              <xs:element name="Car_Info" msdata:ReadOnly="true" msdata:Expression="Parent(FK_Order_Table_Auto_Table).About_Car" msprop:Generator_UserColumnName="Car_Info" msprop:Generator_ColumnPropNameInTable="Car_InfoColumn" msprop:Generator_ColumnPropNameInRow="Car_Info" msprop:Generator_ColumnVarNameInTable="columnCar_Info" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

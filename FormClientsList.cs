@@ -30,6 +30,11 @@ namespace STO_Lab
             Activate(); 
         }
 
+        string GetSelectedFieldName() 
+        { 
+            return client_TableDataGridView.Columns[client_TableDataGridView.CurrentCell.ColumnIndex].DataPropertyName; 
+        }
+
         private void client_DataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if ((client_TableDataGridView.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumnPol"].Value == null) 
@@ -73,6 +78,60 @@ namespace STO_Lab
             Console.WriteLine("Error occurred in cell with value: " + cellValue);
 
             e.Cancel = true;
+        }
+
+        private void toolStripButtonFind_Click(object sender, EventArgs e)
+        {
+            {
+                if (toolStripTextBoxFind.Text == "") 
+                { 
+                    MessageBox.Show("Вы ничего не задали", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    return; 
+                }
+
+                int indexPos;
+
+                try 
+                { 
+                    indexPos = client_TableBindingSource.Find(GetSelectedFieldName(), toolStripTextBoxFind.Text); 
+                } 
+                catch (Exception err) 
+                { 
+                    MessageBox.Show("Ошибка поиска \n" + err.Message); 
+                    return; 
+                }
+
+                if (indexPos > -1)
+                    client_TableBindingSource.Position = indexPos; 
+                else 
+                { 
+                    MessageBox.Show("Таких сотрудников нет", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    client_TableBindingSource.Position = 0; 
+                }
+            }
+        }
+
+        private void checkBoxFind_CheckedChanged(object sender, EventArgs e)
+        {
+            {
+                if (checkBoxFind.Checked)
+                {
+                    if (toolStripTextBoxFind.Text == "") MessageBox.Show("Вы ничего не задали", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else try
+                        {
+                            client_TableBindingSource.Filter = GetSelectedFieldName() + "='" + toolStripTextBoxFind.Text + "'";
+
+                        }
+                        catch (Exception err) { MessageBox.Show("Ошибка фильтрации \n" + err.Message); }
+                }
+                else client_TableBindingSource.Filter = "";
+
+                if (client_TableBindingSource.Count == 0)
+                {
+                    MessageBox.Show("Нет таких");
+                    client_TableBindingSource.Filter = ""; checkBoxFind.Checked = false;
+                }
+            }
         }
     }
 }

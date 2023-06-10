@@ -274,7 +274,7 @@
             this.iDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employee_TableBindingSource, "ID", true));
             this.iDTextBox.Location = new System.Drawing.Point(271, 38);
             this.iDTextBox.Name = "iDTextBox";
-            this.iDTextBox.Size = new System.Drawing.Size(45, 20);
+            this.iDTextBox.Size = new System.Drawing.Size(34, 20);
             this.iDTextBox.TabIndex = 2;
             // 
             // full_NameTextBox
