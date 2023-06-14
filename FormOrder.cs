@@ -63,6 +63,10 @@ namespace STO_Lab
 
         private void FormOrder_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "sTODataSet.Used_Parts_Table". При необходимости она может быть перемещена или удалена.
+            this.used_Parts_TableTableAdapter.Fill(this.sTODataSet.Used_Parts_Table);
+            sTODataSet.Order_Table.Columns["Date_Issued"].DefaultValue = DateTime.Now;
+            sTODataSet.Order_Employee_Rel_Table.Columns["Start_Date"].DefaultValue = DateTime.Now;
             // TODO: данная строка кода позволяет загрузить данные в таблицу "sTODataSet.Employee_Table". При необходимости она может быть перемещена или удалена.
             this.employee_TableTableAdapter.Fill(this.sTODataSet.Employee_Table);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "sTODataSet.Auto_Table". При необходимости она может быть перемещена или удалена.

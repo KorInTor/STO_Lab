@@ -47,10 +47,11 @@
             this.сотрудникиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.клиентыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.деталиНаСкладеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заказыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.ExittoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.InfotoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.документыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.contextMenuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
@@ -107,7 +108,7 @@
             // 
             this.сотрудникиToolStripMenuItem.Image = global::STO_Lab.Properties.Resources.employee;
             this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
-            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
             this.сотрудникиToolStripMenuItem.Click += new System.EventHandler(this.сотрудникиToolStripMenuItem_Click);
             // 
@@ -115,15 +116,15 @@
             // 
             this.клиентыToolStripMenuItem.Image = global::STO_Lab.Properties.Resources.client;
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.клиентыToolStripMenuItem.Text = "Клиенты";
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            this.клиентыToolStripMenuItem.Text = "Клиенты и предоставленные авто";
             this.клиентыToolStripMenuItem.Click += new System.EventHandler(this.клиентыToolStripMenuItem_Click);
             // 
             // обслуженныеАвтоToolStripMenuItem
             // 
             this.обслуженныеАвтоToolStripMenuItem.Image = global::STO_Lab.Properties.Resources.instruments;
             this.обслуженныеАвтоToolStripMenuItem.Name = "обслуженныеАвтоToolStripMenuItem";
-            this.обслуженныеАвтоToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.обслуженныеАвтоToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
             this.обслуженныеАвтоToolStripMenuItem.Text = "Детали на складе";
             this.обслуженныеАвтоToolStripMenuItem.Click += new System.EventHandler(this.обслуженныеАвтоToolStripMenuItem_Click);
             // 
@@ -139,7 +140,7 @@
             // 
             this.заказыToolStripMenuItem.Image = global::STO_Lab.Properties.Resources.order;
             this.заказыToolStripMenuItem.Name = "заказыToolStripMenuItem";
-            this.заказыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.заказыToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.заказыToolStripMenuItem.Text = "Заказы";
             this.заказыToolStripMenuItem.Click += new System.EventHandler(this.заказыToolStripMenuItem_Click);
             // 
@@ -147,9 +148,10 @@
             // 
             this.contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem1,
-            this.справочникToolStripMenuItem1});
+            this.справочникToolStripMenuItem1,
+            this.документыToolStripMenuItem1});
             this.contextMenuStripMain.Name = "contextMenuStripMain";
-            this.contextMenuStripMain.Size = new System.Drawing.Size(143, 48);
+            this.contextMenuStripMain.Size = new System.Drawing.Size(143, 70);
             // 
             // файлToolStripMenuItem1
             // 
@@ -181,8 +183,7 @@
             this.справочникToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.сотрудникиToolStripMenuItem1,
             this.клиентыToolStripMenuItem1,
-            this.деталиНаСкладеToolStripMenuItem,
-            this.заказыToolStripMenuItem1});
+            this.деталиНаСкладеToolStripMenuItem});
             this.справочникToolStripMenuItem1.Name = "справочникToolStripMenuItem1";
             this.справочникToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.справочникToolStripMenuItem1.Text = "Справочник";
@@ -191,29 +192,22 @@
             // 
             this.сотрудникиToolStripMenuItem1.Image = global::STO_Lab.Properties.Resources.employee;
             this.сотрудникиToolStripMenuItem1.Name = "сотрудникиToolStripMenuItem1";
-            this.сотрудникиToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
+            this.сотрудникиToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
             this.сотрудникиToolStripMenuItem1.Text = "Сотрудники";
             // 
             // клиентыToolStripMenuItem1
             // 
             this.клиентыToolStripMenuItem1.Image = global::STO_Lab.Properties.Resources.client;
             this.клиентыToolStripMenuItem1.Name = "клиентыToolStripMenuItem1";
-            this.клиентыToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
-            this.клиентыToolStripMenuItem1.Text = "Клиенты";
+            this.клиентыToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
+            this.клиентыToolStripMenuItem1.Text = "Клиенты и Автомобили";
             // 
             // деталиНаСкладеToolStripMenuItem
             // 
             this.деталиНаСкладеToolStripMenuItem.Image = global::STO_Lab.Properties.Resources.instruments;
             this.деталиНаСкладеToolStripMenuItem.Name = "деталиНаСкладеToolStripMenuItem";
-            this.деталиНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.деталиНаСкладеToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.деталиНаСкладеToolStripMenuItem.Text = "Детали на складе";
-            // 
-            // заказыToolStripMenuItem1
-            // 
-            this.заказыToolStripMenuItem1.Image = global::STO_Lab.Properties.Resources.order;
-            this.заказыToolStripMenuItem1.Name = "заказыToolStripMenuItem1";
-            this.заказыToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
-            this.заказыToolStripMenuItem1.Text = "Заказы";
             // 
             // toolStripMain
             // 
@@ -245,6 +239,21 @@
             this.InfotoolStripButton.Size = new System.Drawing.Size(23, 22);
             this.InfotoolStripButton.Text = "О программе";
             this.InfotoolStripButton.Click += new System.EventHandler(this.оПрограммеToolStripMenuItem_Click);
+            // 
+            // документыToolStripMenuItem1
+            // 
+            this.документыToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.документыToolStripMenuItem1.Name = "документыToolStripMenuItem1";
+            this.документыToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.документыToolStripMenuItem1.Text = "Документы";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = global::STO_Lab.Properties.Resources.order;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Заказы";
             // 
             // FormMain
             // 
@@ -292,9 +301,10 @@
         private System.Windows.Forms.ToolStrip toolStripMain;
         private System.Windows.Forms.ToolStripButton ExittoolStripButton;
         private System.Windows.Forms.ToolStripButton InfotoolStripButton;
-        private System.Windows.Forms.ToolStripMenuItem заказыToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заказыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

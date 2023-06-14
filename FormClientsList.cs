@@ -65,6 +65,8 @@ namespace STO_Lab
 
         private void FormClientsList_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "sTODataSet.Auto_Table". При необходимости она может быть перемещена или удалена.
+            this.auto_TableTableAdapter.Fill(this.sTODataSet.Auto_Table);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "sTODataSet.Client_Table". При необходимости она может быть перемещена или удалена.
             this.client_TableTableAdapter.Fill(this.sTODataSet.Client_Table);
         }

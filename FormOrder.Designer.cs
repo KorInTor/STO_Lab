@@ -33,14 +33,6 @@
             System.Windows.Forms.Label fixed_Defects_ListLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrderList));
             this.order_TableDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Car_Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.order_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sTODataSet = new STO_Lab.STODataSet();
             this.defects_ListTextBox = new System.Windows.Forms.TextBox();
             this.fixed_Defects_ListTextBox = new System.Windows.Forms.TextBox();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -58,10 +50,6 @@
             this.order_TableBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.EmployesTableGroupBox = new System.Windows.Forms.GroupBox();
             this.order_Employee_Rel_TableDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtomEmployee = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.order_Employee_Rel_TableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.order_Employee_TableBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -78,6 +66,33 @@
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.OrderGroupBox = new System.Windows.Forms.GroupBox();
             this.UsedPartsGroupBox = new System.Windows.Forms.GroupBox();
+            this.Car_Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.used_Parts_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.used_Parts_TableDataGridView = new System.Windows.Forms.DataGridView();
+            this.used_Parts_Table_BindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.order_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sTODataSet = new STO_Lab.STODataSet();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtomEmployee = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.order_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Order_TableTableAdapter();
             this.tableAdapterManager = new STO_Lab.STODataSetTableAdapters.TableAdapterManager();
             this.order_Employee_Rel_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Order_Employee_Rel_TableTableAdapter();
@@ -85,11 +100,13 @@
             this.auto_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Auto_TableTableAdapter();
             this.employee_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employee_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Employee_TableTableAdapter();
+            this.used_Parts_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Used_Parts_TableTableAdapter();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             defects_ListLabel = new System.Windows.Forms.Label();
             fixed_Defects_ListLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.order_TableDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingNavigator)).BeginInit();
             this.order_TableBindingNavigator.SuspendLayout();
             this.EmployesTableGroupBox.SuspendLayout();
@@ -98,6 +115,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.order_Employee_TableBindingNavigator)).BeginInit();
             this.order_Employee_TableBindingNavigator.SuspendLayout();
             this.OrderGroupBox.SuspendLayout();
+            this.UsedPartsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_Table_BindingNavigator)).BeginInit();
+            this.used_Parts_Table_BindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auto_TableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employee_TableBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -137,58 +161,6 @@
             this.order_TableDataGridView.Name = "order_TableDataGridView";
             this.order_TableDataGridView.Size = new System.Drawing.Size(603, 260);
             this.order_TableDataGridView.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Order_ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Order_ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Date_Issued";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Date_Issued";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // Car_Info
-            // 
-            this.Car_Info.DataPropertyName = "Car_Info";
-            this.Car_Info.HeaderText = "Car_Info";
-            this.Car_Info.Name = "Car_Info";
-            this.Car_Info.ReadOnly = true;
-            this.Car_Info.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Auto_VINcode";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Auto_VINcode";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Amount_spent";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Amount_spent";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Status";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Status";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 50;
-            // 
-            // order_TableBindingSource
-            // 
-            this.order_TableBindingSource.DataMember = "Order_Table";
-            this.order_TableBindingSource.DataSource = this.sTODataSet;
-            // 
-            // sTODataSet
-            // 
-            this.sTODataSet.DataSetName = "STODataSet";
-            this.sTODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // defects_ListTextBox
             // 
@@ -329,7 +301,7 @@
             this.order_TableBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.order_TableBindingNavigator.Name = "order_TableBindingNavigator";
             this.order_TableBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.order_TableBindingNavigator.Size = new System.Drawing.Size(1304, 25);
+            this.order_TableBindingNavigator.Size = new System.Drawing.Size(1401, 25);
             this.order_TableBindingNavigator.TabIndex = 0;
             this.order_TableBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -359,33 +331,6 @@
             this.order_Employee_Rel_TableDataGridView.Name = "order_Employee_Rel_TableDataGridView";
             this.order_Employee_Rel_TableDataGridView.Size = new System.Drawing.Size(600, 156);
             this.order_Employee_Rel_TableDataGridView.TabIndex = 11;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Employee_ID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Employee_ID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewButtomEmployee
-            // 
-            this.dataGridViewButtomEmployee.DataPropertyName = "EmployeeInfo";
-            this.dataGridViewButtomEmployee.HeaderText = "EmployeeInfo";
-            this.dataGridViewButtomEmployee.Name = "dataGridViewButtomEmployee";
-            this.dataGridViewButtomEmployee.ReadOnly = true;
-            this.dataGridViewButtomEmployee.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtomEmployee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Order_ID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Order_ID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Start_Date";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Start_Date";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // order_Employee_Rel_TableBindingSource1
             // 
@@ -528,12 +473,238 @@
             // 
             // UsedPartsGroupBox
             // 
+            this.UsedPartsGroupBox.Controls.Add(this.used_Parts_TableDataGridView);
+            this.UsedPartsGroupBox.Controls.Add(this.used_Parts_Table_BindingNavigator);
             this.UsedPartsGroupBox.Location = new System.Drawing.Point(905, 42);
             this.UsedPartsGroupBox.Name = "UsedPartsGroupBox";
-            this.UsedPartsGroupBox.Size = new System.Drawing.Size(387, 263);
+            this.UsedPartsGroupBox.Size = new System.Drawing.Size(454, 474);
             this.UsedPartsGroupBox.TabIndex = 11;
             this.UsedPartsGroupBox.TabStop = false;
             this.UsedPartsGroupBox.Text = "Used Parts";
+            // 
+            // Car_Info
+            // 
+            this.Car_Info.DataPropertyName = "Car_Info";
+            this.Car_Info.HeaderText = "Car_Info";
+            this.Car_Info.Name = "Car_Info";
+            this.Car_Info.ReadOnly = true;
+            this.Car_Info.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // used_Parts_TableBindingSource
+            // 
+            this.used_Parts_TableBindingSource.DataMember = "FK_Used_Parts_Table_Order_Table";
+            this.used_Parts_TableBindingSource.DataSource = this.order_TableBindingSource;
+            // 
+            // used_Parts_TableDataGridView
+            // 
+            this.used_Parts_TableDataGridView.AutoGenerateColumns = false;
+            this.used_Parts_TableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.used_Parts_TableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn10});
+            this.used_Parts_TableDataGridView.DataSource = this.used_Parts_TableBindingSource;
+            this.used_Parts_TableDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.used_Parts_TableDataGridView.Location = new System.Drawing.Point(3, 41);
+            this.used_Parts_TableDataGridView.Name = "used_Parts_TableDataGridView";
+            this.used_Parts_TableDataGridView.Size = new System.Drawing.Size(448, 430);
+            this.used_Parts_TableDataGridView.TabIndex = 0;
+            // 
+            // used_Parts_Table_BindingNavigator
+            // 
+            this.used_Parts_Table_BindingNavigator.AddNewItem = this.toolStripButton8;
+            this.used_Parts_Table_BindingNavigator.BindingSource = this.order_Employee_Rel_TableBindingSource1;
+            this.used_Parts_Table_BindingNavigator.CountItem = this.toolStripLabel2;
+            this.used_Parts_Table_BindingNavigator.DeleteItem = this.toolStripButton9;
+            this.used_Parts_Table_BindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton10,
+            this.toolStripButton11,
+            this.toolStripSeparator4,
+            this.toolStripTextBox2,
+            this.toolStripLabel2,
+            this.toolStripSeparator5,
+            this.toolStripButton12,
+            this.toolStripButton13,
+            this.toolStripSeparator6,
+            this.toolStripButton8,
+            this.toolStripButton9,
+            this.toolStripButton14});
+            this.used_Parts_Table_BindingNavigator.Location = new System.Drawing.Point(3, 16);
+            this.used_Parts_Table_BindingNavigator.MoveFirstItem = this.toolStripButton10;
+            this.used_Parts_Table_BindingNavigator.MoveLastItem = this.toolStripButton13;
+            this.used_Parts_Table_BindingNavigator.MoveNextItem = this.toolStripButton12;
+            this.used_Parts_Table_BindingNavigator.MovePreviousItem = this.toolStripButton11;
+            this.used_Parts_Table_BindingNavigator.Name = "used_Parts_Table_BindingNavigator";
+            this.used_Parts_Table_BindingNavigator.PositionItem = this.toolStripTextBox2;
+            this.used_Parts_Table_BindingNavigator.Size = new System.Drawing.Size(448, 25);
+            this.used_Parts_Table_BindingNavigator.TabIndex = 12;
+            this.used_Parts_Table_BindingNavigator.Text = "bindingNavigator1";
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton8.Text = "Добавить";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(43, 22);
+            this.toolStripLabel2.Text = "для {0}";
+            this.toolStripLabel2.ToolTipText = "Общее число элементов";
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton9.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton9.Text = "Удалить";
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton10.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton10.Text = "Переместить в начало";
+            // 
+            // toolStripButton11
+            // 
+            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton11.Image")));
+            this.toolStripButton11.Name = "toolStripButton11";
+            this.toolStripButton11.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton11.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton11.Text = "Переместить назад";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripTextBox2
+            // 
+            this.toolStripTextBox2.AccessibleName = "Положение";
+            this.toolStripTextBox2.AutoSize = false;
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox2.Name = "toolStripTextBox2";
+            this.toolStripTextBox2.Size = new System.Drawing.Size(50, 23);
+            this.toolStripTextBox2.Text = "0";
+            this.toolStripTextBox2.ToolTipText = "Текущее положение";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton12
+            // 
+            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton12.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton12.Image")));
+            this.toolStripButton12.Name = "toolStripButton12";
+            this.toolStripButton12.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton12.Text = "Переместить вперед";
+            // 
+            // toolStripButton13
+            // 
+            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton13.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton13.Image")));
+            this.toolStripButton13.Name = "toolStripButton13";
+            this.toolStripButton13.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton13.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton13.Text = "Переместить в конец";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton14
+            // 
+            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton14.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton14.Image")));
+            this.toolStripButton14.Name = "toolStripButton14";
+            this.toolStripButton14.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton14.Text = "Сохранить данные";
+            // 
+            // order_TableBindingSource
+            // 
+            this.order_TableBindingSource.DataMember = "Order_Table";
+            this.order_TableBindingSource.DataSource = this.sTODataSet;
+            // 
+            // sTODataSet
+            // 
+            this.sTODataSet.DataSetName = "STODataSet";
+            this.sTODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Order_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Order_ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Date_Issued";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Date_Issued";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Auto_VINcode";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Auto_VINcode";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Amount_spent";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Amount_spent";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Status";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Status";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Employee_ID";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Employee_ID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewButtomEmployee
+            // 
+            this.dataGridViewButtomEmployee.DataPropertyName = "EmployeeInfo";
+            this.dataGridViewButtomEmployee.HeaderText = "EmployeeInfo";
+            this.dataGridViewButtomEmployee.Name = "dataGridViewButtomEmployee";
+            this.dataGridViewButtomEmployee.ReadOnly = true;
+            this.dataGridViewButtomEmployee.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtomEmployee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Order_ID";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Order_ID";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Start_Date";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Start_Date";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // order_TableTableAdapter
             // 
@@ -573,11 +744,33 @@
             // 
             this.employee_TableTableAdapter.ClearBeforeFill = true;
             // 
+            // used_Parts_TableTableAdapter
+            // 
+            this.used_Parts_TableTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Order_ID";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Order_ID";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Part_ID";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Part_ID";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
             // FormOrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1304, 539);
+            this.ClientSize = new System.Drawing.Size(1401, 539);
             this.Controls.Add(this.UsedPartsGroupBox);
             this.Controls.Add(this.OrderGroupBox);
             this.Controls.Add(this.EmployesTableGroupBox);
@@ -590,8 +783,6 @@
             this.Text = "FormOrder";
             this.Load += new System.EventHandler(this.FormOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.order_TableDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingNavigator)).EndInit();
             this.order_TableBindingNavigator.ResumeLayout(false);
             this.order_TableBindingNavigator.PerformLayout();
@@ -603,6 +794,15 @@
             this.order_Employee_TableBindingNavigator.ResumeLayout(false);
             this.order_Employee_TableBindingNavigator.PerformLayout();
             this.OrderGroupBox.ResumeLayout(false);
+            this.UsedPartsGroupBox.ResumeLayout(false);
+            this.UsedPartsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_Table_BindingNavigator)).EndInit();
+            this.used_Parts_Table_BindingNavigator.ResumeLayout(false);
+            this.used_Parts_Table_BindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auto_TableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employee_TableBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -652,12 +852,6 @@
         private System.Windows.Forms.BindingSource auto_TableBindingSource;
         private STODataSetTableAdapters.Auto_TableTableAdapter auto_TableTableAdapter;
         private System.Windows.Forms.GroupBox UsedPartsGroupBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Car_Info;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridView order_Employee_Rel_TableDataGridView;
         private System.Windows.Forms.BindingSource employee_TableBindingSource;
         private STODataSetTableAdapters.Employee_TableTableAdapter employee_TableTableAdapter;
@@ -665,5 +859,30 @@
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtomEmployee;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Car_Info;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.BindingSource used_Parts_TableBindingSource;
+        private STODataSetTableAdapters.Used_Parts_TableTableAdapter used_Parts_TableTableAdapter;
+        private System.Windows.Forms.DataGridView used_Parts_TableDataGridView;
+        private System.Windows.Forms.BindingNavigator used_Parts_Table_BindingNavigator;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripButton toolStripButton10;
+        private System.Windows.Forms.ToolStripButton toolStripButton11;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButton12;
+        private System.Windows.Forms.ToolStripButton toolStripButton13;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton toolStripButton14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }
