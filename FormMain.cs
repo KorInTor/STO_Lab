@@ -56,5 +56,10 @@ namespace STO_Lab
         {
             FormOrderList.fo.ShowForm();
         }
+
+        private void запросыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSQL.fs.ShowForm();
+        }
     }
 }
