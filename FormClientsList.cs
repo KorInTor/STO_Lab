@@ -60,7 +60,6 @@ namespace STO_Lab
             this.Validate();
             this.client_TableBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.sTODataSet);
-
         }
 
         private void FormClientsList_Load(object sender, EventArgs e)
@@ -107,7 +106,7 @@ namespace STO_Lab
                     client_TableBindingSource.Position = indexPos; 
                 else 
                 { 
-                    MessageBox.Show("Таких сотрудников нет", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Таких клиентов нет", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     client_TableBindingSource.Position = 0; 
                 }
             }

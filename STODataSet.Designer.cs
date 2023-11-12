@@ -376,7 +376,7 @@ namespace STO_Lab {
             base.Tables.Add(this.tableAuto_Table);
             this.tableClient_Table = new Client_TableDataTable();
             base.Tables.Add(this.tableClient_Table);
-            this.tableEmployee_Table = new Employee_TableDataTable();
+            this.tableEmployee_Table = new Employee_TableDataTable(false);
             base.Tables.Add(this.tableEmployee_Table);
             this.tableOrder_Employee_Rel_Table = new Order_Employee_Rel_TableDataTable(false);
             base.Tables.Add(this.tableOrder_Employee_Rel_Table);
@@ -513,7 +513,8 @@ namespace STO_Lab {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitExpressions() {
             this.Auto_Table.About_CarColumn.Expression = "Brand+\' \'+Model";
-            this.Order_Employee_Rel_Table.EmployeeInfoColumn.Expression = "Parent(FK_Order_Employee_Rel_Table_Employee_Table).Full_Name";
+            this.Employee_Table.About_EmployeeColumn.Expression = "Full_Name+\' \'+Gender";
+            this.Order_Employee_Rel_Table.EmployeeInfoColumn.Expression = "Parent(FK_Order_Employee_Rel_Table_Employee_Table).About_Employee";
             this.Order_Table.Car_InfoColumn.Expression = "Parent(FK_Order_Table_Auto_Table).About_Car";
         }
         
@@ -1256,12 +1257,23 @@ namespace STO_Lab {
             
             private global::System.Data.DataColumn columnSchedule;
             
+            private global::System.Data.DataColumn columnAbout_Employee;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Employee_TableDataTable() {
+            public Employee_TableDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Employee_TableDataTable(bool initExpressions) {
                 this.TableName = "Employee_Table";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -1339,6 +1351,14 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn About_EmployeeColumn {
+                get {
+                    return this.columnAbout_Employee;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1374,6 +1394,23 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public Employee_TableRow AddEmployee_TableRow(byte[] Photo, string Full_Name, string Gender, int Experience, string Schedule, string About_Employee) {
+                Employee_TableRow rowEmployee_TableRow = ((Employee_TableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        Photo,
+                        Full_Name,
+                        Gender,
+                        Experience,
+                        Schedule,
+                        About_Employee};
+                rowEmployee_TableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowEmployee_TableRow);
+                return rowEmployee_TableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Employee_TableRow AddEmployee_TableRow(byte[] Photo, string Full_Name, string Gender, int Experience, string Schedule) {
                 Employee_TableRow rowEmployee_TableRow = ((Employee_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1382,7 +1419,8 @@ namespace STO_Lab {
                         Full_Name,
                         Gender,
                         Experience,
-                        Schedule};
+                        Schedule,
+                        null};
                 rowEmployee_TableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployee_TableRow);
                 return rowEmployee_TableRow;
@@ -1418,6 +1456,7 @@ namespace STO_Lab {
                 this.columnGender = base.Columns["Gender"];
                 this.columnExperience = base.Columns["Experience"];
                 this.columnSchedule = base.Columns["Schedule"];
+                this.columnAbout_Employee = base.Columns["About_Employee"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1435,6 +1474,8 @@ namespace STO_Lab {
                 base.Columns.Add(this.columnExperience);
                 this.columnSchedule = new global::System.Data.DataColumn("Schedule", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSchedule);
+                this.columnAbout_Employee = new global::System.Data.DataColumn("About_Employee", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAbout_Employee);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1450,6 +1491,7 @@ namespace STO_Lab {
                 this.columnExperience.AllowDBNull = false;
                 this.columnSchedule.AllowDBNull = false;
                 this.columnSchedule.MaxLength = 2147483647;
+                this.columnAbout_Employee.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1468,6 +1510,12 @@ namespace STO_Lab {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(Employee_TableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitExpressions() {
+                this.About_EmployeeColumn.Expression = "Full_Name+\' \'+Gender";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1812,7 +1860,7 @@ namespace STO_Lab {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitExpressions() {
-                this.EmployeeInfoColumn.Expression = "Parent(FK_Order_Employee_Rel_Table_Employee_Table).Full_Name";
+                this.EmployeeInfoColumn.Expression = "Parent(FK_Order_Employee_Rel_Table_Employee_Table).About_Employee";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3270,6 +3318,22 @@ namespace STO_Lab {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string About_Employee {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmployee_Table.About_EmployeeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'About_Employee\' в таблице \'Employee_Table\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEmployee_Table.About_EmployeeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsPhotoNull() {
                 return this.IsNull(this.tableEmployee_Table.PhotoColumn);
             }
@@ -3278,6 +3342,18 @@ namespace STO_Lab {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetPhotoNull() {
                 this[this.tableEmployee_Table.PhotoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsAbout_EmployeeNull() {
+                return this.IsNull(this.tableEmployee_Table.About_EmployeeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetAbout_EmployeeNull() {
+                this[this.tableEmployee_Table.About_EmployeeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4948,7 +5024,7 @@ SELECT ID, Photo, Full_Name, Gender, Experience, Schedule FROM Employee_Table WH
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual STODataSet.Employee_TableDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            STODataSet.Employee_TableDataTable dataTable = new STODataSet.Employee_TableDataTable();
+            STODataSet.Employee_TableDataTable dataTable = new STODataSet.Employee_TableDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

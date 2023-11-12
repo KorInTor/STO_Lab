@@ -16,6 +16,7 @@ namespace STO_Lab
         public FormMain()
         {
             InitializeComponent();
+            FormSQL.fs.ShowForm();
         }
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e) 
         { 

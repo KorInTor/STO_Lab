@@ -37,9 +37,18 @@ namespace STO_Lab
 
         private void employee_TableBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.employee_TableBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.sTODataSet);
+            try
+            {
+                if (Convert.ToInt16(experienceTextBox.Text) < 0)
+                    throw new Exception("Стаж не может быть меньше нуля.");
+                this.Validate();
+                this.employee_TableBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.sTODataSet);
+            }
+           catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
 
         }
 

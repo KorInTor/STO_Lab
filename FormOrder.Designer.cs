@@ -33,6 +33,14 @@
             System.Windows.Forms.Label fixed_Defects_ListLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOrderList));
             this.order_TableDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Car_Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.order_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sTODataSet = new STO_Lab.STODataSet();
             this.defects_ListTextBox = new System.Windows.Forms.TextBox();
             this.fixed_Defects_ListTextBox = new System.Windows.Forms.TextBox();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -50,8 +58,12 @@
             this.order_TableBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.EmployesTableGroupBox = new System.Windows.Forms.GroupBox();
             this.order_Employee_Rel_TableDataGridView = new System.Windows.Forms.DataGridView();
-            this.order_Employee_Rel_TableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.order_Employee_TableBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_Employee_Rel_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.order_Employee_Rel_TableBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -66,9 +78,11 @@
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.OrderGroupBox = new System.Windows.Forms.GroupBox();
             this.UsedPartsGroupBox = new System.Windows.Forms.GroupBox();
-            this.Car_Info = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.used_Parts_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.used_Parts_TableDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.used_Parts_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.used_Parts_Table_BindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
@@ -82,48 +96,36 @@
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
-            this.order_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sTODataSet = new STO_Lab.STODataSet();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtomEmployee = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.order_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Order_TableTableAdapter();
             this.tableAdapterManager = new STO_Lab.STODataSetTableAdapters.TableAdapterManager();
-            this.order_Employee_Rel_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Order_Employee_Rel_TableTableAdapter();
             this.auto_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.auto_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Auto_TableTableAdapter();
             this.employee_TableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employee_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Employee_TableTableAdapter();
             this.used_Parts_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Used_Parts_TableTableAdapter();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.order_Employee_Rel_TableTableAdapter = new STO_Lab.STODataSetTableAdapters.Order_Employee_Rel_TableTableAdapter();
+            this.fKUsedPartsTableOrderTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             defects_ListLabel = new System.Windows.Forms.Label();
             fixed_Defects_ListLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.order_TableDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingNavigator)).BeginInit();
             this.order_TableBindingNavigator.SuspendLayout();
             this.EmployesTableGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_TableBindingNavigator)).BeginInit();
-            this.order_Employee_TableBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableBindingNavigator)).BeginInit();
+            this.order_Employee_Rel_TableBindingNavigator.SuspendLayout();
             this.OrderGroupBox.SuspendLayout();
             this.UsedPartsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.used_Parts_Table_BindingNavigator)).BeginInit();
             this.used_Parts_Table_BindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.auto_TableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employee_TableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKUsedPartsTableOrderTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // defects_ListLabel
@@ -161,6 +163,59 @@
             this.order_TableDataGridView.Name = "order_TableDataGridView";
             this.order_TableDataGridView.Size = new System.Drawing.Size(603, 260);
             this.order_TableDataGridView.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Order_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Order_ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Date_Issued";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Date_Issued";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // Car_Info
+            // 
+            this.Car_Info.DataPropertyName = "Car_Info";
+            this.Car_Info.HeaderText = "Car_Info";
+            this.Car_Info.Name = "Car_Info";
+            this.Car_Info.ReadOnly = true;
+            this.Car_Info.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Auto_VINcode";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Auto_VINcode";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Amount_spent";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Amount_spent";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Status";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Status";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Width = 50;
+            // 
+            // order_TableBindingSource
+            // 
+            this.order_TableBindingSource.DataMember = "Order_Table";
+            this.order_TableBindingSource.DataSource = this.sTODataSet;
+            // 
+            // sTODataSet
+            // 
+            this.sTODataSet.DataSetName = "STODataSet";
+            this.sTODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // defects_ListTextBox
             // 
@@ -273,7 +328,7 @@
             this.order_TableBindingNavigatorSaveItem.Name = "order_TableBindingNavigatorSaveItem";
             this.order_TableBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.order_TableBindingNavigatorSaveItem.Text = "Сохранить данные";
-            this.order_TableBindingNavigatorSaveItem.Click += new System.EventHandler(this.order_Employee_TableBindingNavigatorSaveItem_Click);
+            this.order_TableBindingNavigatorSaveItem.Click += new System.EventHandler(this.order_TableBindingNavigatorSaveItem_Click);
             // 
             // order_TableBindingNavigator
             // 
@@ -308,10 +363,10 @@
             // EmployesTableGroupBox
             // 
             this.EmployesTableGroupBox.Controls.Add(this.order_Employee_Rel_TableDataGridView);
-            this.EmployesTableGroupBox.Controls.Add(this.order_Employee_TableBindingNavigator);
+            this.EmployesTableGroupBox.Controls.Add(this.order_Employee_Rel_TableBindingNavigator);
             this.EmployesTableGroupBox.Location = new System.Drawing.Point(6, 316);
             this.EmployesTableGroupBox.Name = "EmployesTableGroupBox";
-            this.EmployesTableGroupBox.Size = new System.Drawing.Size(606, 203);
+            this.EmployesTableGroupBox.Size = new System.Drawing.Size(603, 263);
             this.EmployesTableGroupBox.TabIndex = 9;
             this.EmployesTableGroupBox.TabStop = false;
             this.EmployesTableGroupBox.Text = "Employes on that Order:";
@@ -322,28 +377,54 @@
             this.order_Employee_Rel_TableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.order_Employee_Rel_TableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewButtomEmployee,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn7});
-            this.order_Employee_Rel_TableDataGridView.DataSource = this.order_Employee_Rel_TableBindingSource1;
-            this.order_Employee_Rel_TableDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.order_Employee_Rel_TableDataGridView.Location = new System.Drawing.Point(3, 44);
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn11});
+            this.order_Employee_Rel_TableDataGridView.DataSource = this.order_Employee_Rel_TableBindingSource;
+            this.order_Employee_Rel_TableDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.order_Employee_Rel_TableDataGridView.Location = new System.Drawing.Point(3, 41);
             this.order_Employee_Rel_TableDataGridView.Name = "order_Employee_Rel_TableDataGridView";
-            this.order_Employee_Rel_TableDataGridView.Size = new System.Drawing.Size(600, 156);
-            this.order_Employee_Rel_TableDataGridView.TabIndex = 11;
+            this.order_Employee_Rel_TableDataGridView.Size = new System.Drawing.Size(597, 219);
+            this.order_Employee_Rel_TableDataGridView.TabIndex = 0;
+            this.order_Employee_Rel_TableDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.order_Employee_Rel_TableDataGridView_DataError);
             // 
-            // order_Employee_Rel_TableBindingSource1
+            // dataGridViewTextBoxColumn2
             // 
-            this.order_Employee_Rel_TableBindingSource1.DataMember = "FK_Order_Employee_Rel_Table_Order_Tabel";
-            this.order_Employee_Rel_TableBindingSource1.DataSource = this.order_TableBindingSource;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Employee_ID";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Employee_ID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // order_Employee_TableBindingNavigator
+            // dataGridViewTextBoxColumn3
             // 
-            this.order_Employee_TableBindingNavigator.AddNewItem = this.toolStripButton1;
-            this.order_Employee_TableBindingNavigator.BindingSource = this.order_Employee_Rel_TableBindingSource1;
-            this.order_Employee_TableBindingNavigator.CountItem = this.toolStripLabel1;
-            this.order_Employee_TableBindingNavigator.DeleteItem = this.toolStripButton2;
-            this.order_Employee_TableBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Order_ID";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Order_ID";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Start_Date";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Start_Date";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "EmployeeInfo";
+            this.dataGridViewTextBoxColumn11.HeaderText = "EmployeeInfo";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // order_Employee_Rel_TableBindingSource
+            // 
+            this.order_Employee_Rel_TableBindingSource.DataMember = "FK_Order_Employee_Rel_Table_Order_Tabel";
+            this.order_Employee_Rel_TableBindingSource.DataSource = this.order_TableBindingSource;
+            // 
+            // order_Employee_Rel_TableBindingNavigator
+            // 
+            this.order_Employee_Rel_TableBindingNavigator.AddNewItem = this.toolStripButton1;
+            this.order_Employee_Rel_TableBindingNavigator.BindingSource = this.order_Employee_Rel_TableBindingSource;
+            this.order_Employee_Rel_TableBindingNavigator.CountItem = this.toolStripLabel1;
+            this.order_Employee_Rel_TableBindingNavigator.DeleteItem = this.toolStripButton2;
+            this.order_Employee_Rel_TableBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton3,
             this.toolStripButton4,
             this.toolStripSeparator1,
@@ -356,16 +437,16 @@
             this.toolStripButton1,
             this.toolStripButton2,
             this.toolStripButton7});
-            this.order_Employee_TableBindingNavigator.Location = new System.Drawing.Point(3, 16);
-            this.order_Employee_TableBindingNavigator.MoveFirstItem = this.toolStripButton3;
-            this.order_Employee_TableBindingNavigator.MoveLastItem = this.toolStripButton6;
-            this.order_Employee_TableBindingNavigator.MoveNextItem = this.toolStripButton5;
-            this.order_Employee_TableBindingNavigator.MovePreviousItem = this.toolStripButton4;
-            this.order_Employee_TableBindingNavigator.Name = "order_Employee_TableBindingNavigator";
-            this.order_Employee_TableBindingNavigator.PositionItem = this.toolStripTextBox1;
-            this.order_Employee_TableBindingNavigator.Size = new System.Drawing.Size(600, 25);
-            this.order_Employee_TableBindingNavigator.TabIndex = 11;
-            this.order_Employee_TableBindingNavigator.Text = "bindingNavigator1";
+            this.order_Employee_Rel_TableBindingNavigator.Location = new System.Drawing.Point(3, 16);
+            this.order_Employee_Rel_TableBindingNavigator.MoveFirstItem = this.toolStripButton3;
+            this.order_Employee_Rel_TableBindingNavigator.MoveLastItem = this.toolStripButton6;
+            this.order_Employee_Rel_TableBindingNavigator.MoveNextItem = this.toolStripButton5;
+            this.order_Employee_Rel_TableBindingNavigator.MovePreviousItem = this.toolStripButton4;
+            this.order_Employee_Rel_TableBindingNavigator.Name = "order_Employee_Rel_TableBindingNavigator";
+            this.order_Employee_Rel_TableBindingNavigator.PositionItem = this.toolStripTextBox1;
+            this.order_Employee_Rel_TableBindingNavigator.Size = new System.Drawing.Size(597, 25);
+            this.order_Employee_Rel_TableBindingNavigator.TabIndex = 12;
+            this.order_Employee_Rel_TableBindingNavigator.Text = "bindingNavigator1";
             // 
             // toolStripButton1
             // 
@@ -460,6 +541,7 @@
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton7.Text = "Сохранить данные";
+            this.toolStripButton7.Click += new System.EventHandler(this.order_Employee_TableBindingNavigatorSaveItem_Click);
             // 
             // OrderGroupBox
             // 
@@ -482,19 +564,6 @@
             this.UsedPartsGroupBox.TabStop = false;
             this.UsedPartsGroupBox.Text = "Used Parts";
             // 
-            // Car_Info
-            // 
-            this.Car_Info.DataPropertyName = "Car_Info";
-            this.Car_Info.HeaderText = "Car_Info";
-            this.Car_Info.Name = "Car_Info";
-            this.Car_Info.ReadOnly = true;
-            this.Car_Info.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // used_Parts_TableBindingSource
-            // 
-            this.used_Parts_TableBindingSource.DataMember = "FK_Used_Parts_Table_Order_Table";
-            this.used_Parts_TableBindingSource.DataSource = this.order_TableBindingSource;
-            // 
             // used_Parts_TableDataGridView
             // 
             this.used_Parts_TableDataGridView.AutoGenerateColumns = false;
@@ -510,10 +579,32 @@
             this.used_Parts_TableDataGridView.Size = new System.Drawing.Size(448, 430);
             this.used_Parts_TableDataGridView.TabIndex = 0;
             // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Order_ID";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Order_ID";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Part_ID";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Part_ID";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Quantity";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Quantity";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // used_Parts_TableBindingSource
+            // 
+            this.used_Parts_TableBindingSource.DataSource = this.fKUsedPartsTableOrderTableBindingSource;
+            // 
             // used_Parts_Table_BindingNavigator
             // 
             this.used_Parts_Table_BindingNavigator.AddNewItem = this.toolStripButton8;
-            this.used_Parts_Table_BindingNavigator.BindingSource = this.order_Employee_Rel_TableBindingSource1;
+            this.used_Parts_Table_BindingNavigator.BindingSource = this.used_Parts_TableBindingSource;
             this.used_Parts_Table_BindingNavigator.CountItem = this.toolStripLabel2;
             this.used_Parts_Table_BindingNavigator.DeleteItem = this.toolStripButton9;
             this.used_Parts_Table_BindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -634,78 +725,6 @@
             this.toolStripButton14.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton14.Text = "Сохранить данные";
             // 
-            // order_TableBindingSource
-            // 
-            this.order_TableBindingSource.DataMember = "Order_Table";
-            this.order_TableBindingSource.DataSource = this.sTODataSet;
-            // 
-            // sTODataSet
-            // 
-            this.sTODataSet.DataSetName = "STODataSet";
-            this.sTODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Order_ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Order_ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Date_Issued";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Date_Issued";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Auto_VINcode";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Auto_VINcode";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Amount_spent";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Amount_spent";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Status";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Status";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Employee_ID";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Employee_ID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewButtomEmployee
-            // 
-            this.dataGridViewButtomEmployee.DataPropertyName = "EmployeeInfo";
-            this.dataGridViewButtomEmployee.HeaderText = "EmployeeInfo";
-            this.dataGridViewButtomEmployee.Name = "dataGridViewButtomEmployee";
-            this.dataGridViewButtomEmployee.ReadOnly = true;
-            this.dataGridViewButtomEmployee.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtomEmployee.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Order_ID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Order_ID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Start_Date";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Start_Date";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
             // order_TableTableAdapter
             // 
             this.order_TableTableAdapter.ClearBeforeFill = true;
@@ -721,10 +740,6 @@
             this.tableAdapterManager.Parts_TableTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = STO_Lab.STODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.Used_Parts_TableTableAdapter = null;
-            // 
-            // order_Employee_Rel_TableTableAdapter
-            // 
-            this.order_Employee_Rel_TableTableAdapter.ClearBeforeFill = true;
             // 
             // auto_TableBindingSource
             // 
@@ -748,29 +763,20 @@
             // 
             this.used_Parts_TableTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTextBoxColumn9
+            // order_Employee_Rel_TableTableAdapter
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Order_ID";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Order_ID";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.order_Employee_Rel_TableTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTextBoxColumn8
+            // fKUsedPartsTableOrderTableBindingSource
             // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Part_ID";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Part_ID";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Quantity";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Quantity";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.fKUsedPartsTableOrderTableBindingSource.DataMember = "FK_Used_Parts_Table_Order_Table";
+            this.fKUsedPartsTableOrderTableBindingSource.DataSource = this.order_TableBindingSource;
             // 
             // FormOrderList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1401, 539);
+            this.ClientSize = new System.Drawing.Size(1401, 587);
             this.Controls.Add(this.UsedPartsGroupBox);
             this.Controls.Add(this.OrderGroupBox);
             this.Controls.Add(this.EmployesTableGroupBox);
@@ -783,28 +789,29 @@
             this.Text = "FormOrder";
             this.Load += new System.EventHandler(this.FormOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.order_TableDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingNavigator)).EndInit();
             this.order_TableBindingNavigator.ResumeLayout(false);
             this.order_TableBindingNavigator.PerformLayout();
             this.EmployesTableGroupBox.ResumeLayout(false);
             this.EmployesTableGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_TableBindingNavigator)).EndInit();
-            this.order_Employee_TableBindingNavigator.ResumeLayout(false);
-            this.order_Employee_TableBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.order_Employee_Rel_TableBindingNavigator)).EndInit();
+            this.order_Employee_Rel_TableBindingNavigator.ResumeLayout(false);
+            this.order_Employee_Rel_TableBindingNavigator.PerformLayout();
             this.OrderGroupBox.ResumeLayout(false);
             this.UsedPartsGroupBox.ResumeLayout(false);
             this.UsedPartsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.used_Parts_TableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.used_Parts_Table_BindingNavigator)).EndInit();
             this.used_Parts_Table_BindingNavigator.ResumeLayout(false);
             this.used_Parts_Table_BindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.order_TableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sTODataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.auto_TableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employee_TableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fKUsedPartsTableOrderTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -832,33 +839,13 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
         private System.Windows.Forms.ToolStripButton order_TableBindingNavigatorSaveItem;
         private System.Windows.Forms.BindingNavigator order_TableBindingNavigator;
-        private STODataSetTableAdapters.Order_Employee_Rel_TableTableAdapter order_Employee_Rel_TableTableAdapter;
         private System.Windows.Forms.GroupBox EmployesTableGroupBox;
         private System.Windows.Forms.GroupBox OrderGroupBox;
-        private System.Windows.Forms.BindingNavigator order_Employee_TableBindingNavigator;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.BindingSource order_Employee_Rel_TableBindingSource1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.BindingSource auto_TableBindingSource;
         private STODataSetTableAdapters.Auto_TableTableAdapter auto_TableTableAdapter;
         private System.Windows.Forms.GroupBox UsedPartsGroupBox;
-        private System.Windows.Forms.DataGridView order_Employee_Rel_TableDataGridView;
         private System.Windows.Forms.BindingSource employee_TableBindingSource;
         private STODataSetTableAdapters.Employee_TableTableAdapter employee_TableTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtomEmployee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Car_Info;
@@ -884,5 +871,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.BindingSource order_Employee_Rel_TableBindingSource;
+        private STODataSetTableAdapters.Order_Employee_Rel_TableTableAdapter order_Employee_Rel_TableTableAdapter;
+        private System.Windows.Forms.DataGridView order_Employee_Rel_TableDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.BindingNavigator order_Employee_Rel_TableBindingNavigator;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton7;
+        private System.Windows.Forms.BindingSource fKUsedPartsTableOrderTableBindingSource;
     }
 }

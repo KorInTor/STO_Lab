@@ -35,6 +35,8 @@ namespace STO_Lab
         {
             InitializeComponent();
             SelectedGenderComboBox.SelectedIndex= 0;
+            radioButtonCorrelated.Checked= true;
+            genderComboBox.SelectedIndex= 0;
         }
         DataTable FillDataGridView(string sqlSelect)
         {
@@ -98,8 +100,6 @@ namespace STO_Lab
             ON Order_Employee_Rel_Table.Order_ID = Order_Table.Order_ID
             WHERE Employee_Table.Gender = @SelectedGender AND (@ShowOnlyCompletedOrders = 0 OR Order_Table.Status = 'true')
             GROUP BY Employee_Table.Full_Name, Employee_Table.Gender";
-            //HAVING COUNT(*) > 1
-            //ORDER BY COUNT(*) DESC;";
 
             SqlConnection connection = new SqlConnection(Properties.Settings.Default.STO_dataBaseConnectionString);
             SqlCommand command = connection.CreateCommand();
@@ -154,5 +154,203 @@ namespace STO_Lab
                 OrderByDescendingRadioButton.Visible = false;
             }
         }
+
+        private void buttonSubquery_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxBrand.Text)) 
+            { 
+                MessageBox.Show("Обязательно укажите бренд автомобиля", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+            string Brand = textBoxBrand.Text.ToString();
+
+            string sqlSelect = "";
+            if (radioButtonCorrelated.Checked)
+                sqlSelect = @"SELECT Full_Name, Phone_Number
+                FROM Client_Table
+                WHERE EXISTS (
+                  SELECT NULL
+                  FROM Auto_Table
+                WHERE Client_Table.Client_ID = Auto_Table.Client_ID
+                AND Brand = @brand);";
+            else if (radioButtonNoCorrelated.Checked)
+                sqlSelect = @"SELECT Full_Name, Phone_Number, Gender
+                FROM Client_Table
+                WHERE Client_ID IN (
+                    SELECT Client_ID
+                    FROM Auto_Table
+                    WHERE Brand = @brand);";
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.STO_dataBaseConnectionString); 
+            SqlCommand command = connection.CreateCommand(); 
+            command.CommandText = sqlSelect;
+            command.Parameters.AddWithValue("@brand", Brand);
+            SqlDataAdapter adapter = new SqlDataAdapter(); 
+            adapter.SelectCommand = command; 
+            DataTable table = new DataTable(); 
+            adapter.Fill(table); 
+            dataGridViewSubquery.DataSource = table; 
+            if (table.Rows.Count == 0) 
+                MessageBox.Show("Нет значений!", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void radioButtonDelete_Client_CheckedChanged(object sender, EventArgs e) 
+        { 
+            panelClient.Visible = !radioButtonDelete_Client.Checked; 
+        }
+        private void buttonSelectClientsClick(object sender, EventArgs e)
+        {
+            dataGridViewClient.DataSource = FillDataGridView("SELECT * FROM Client_Table"); 
+        }
+        private void buttonExecuteDML_Click(object sender, EventArgs e)
+        { 
+            if (radioButtonInsert_Client.Checked) 
+                Insert_Client(); 
+            else if 
+                (radioButtonUpdate_Client.Checked) 
+                UpdateClient(); 
+            else if (radioButtonDelete_Client.Checked) 
+                DeleteClient(); 
+            else 
+                MessageBox.Show("Вы не выбрали действие", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+        }
+        void Insert_Client()
+        {
+            if ((String.IsNullOrEmpty(full_NameTextBox.Text) || (String.IsNullOrEmpty(phone_NumberTextBox.Text))))
+            { 
+                MessageBox.Show("Обязательно введите id Клиента, имя и номер", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                return; 
+            }
+            long phoneNumber;
+            if (!long.TryParse(phone_NumberTextBox.Text, out phoneNumber))
+            {
+                MessageBox.Show("Некоректное значение номера телефона Клиента!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!phone_NumberTextBox.Text.StartsWith("8"))
+            {
+                MessageBox.Show("Номер телефона должен начинаться с 8!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string sqlInsert = @"INSERT INTO [dbo].[Client_Table] ([Full_Name], [Phone_Number], [Gender])
+            VALUES (@FullName, @PhoneNumber, @Gender)";
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.STO_dataBaseConnectionString);
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = sqlInsert;
+            command.Parameters.AddWithValue("@FullName", full_NameTextBox.Text);
+            command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+            command.Parameters.AddWithValue("@Gender", genderComboBox.Text);
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            { 
+                MessageBox.Show("Ошибка выполнения запроса.\n" + err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                return; 
+            }
+
+            connection.Close();
+            buttonSelectClientsClick(this, EventArgs.Empty);
+        }
+        void UpdateClient()
+        {
+            if (String.IsNullOrEmpty(textBoxClient_ID.Text))
+            {
+                MessageBox.Show("Обязательно укажите id Клиента, для которого будете менять данные", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            int id;
+            if (!int.TryParse(textBoxClient_ID.Text, out id))
+            {
+                MessageBox.Show("Некоректное значение id Клиента!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            long phoneNumber = 0;
+            if ((!String.IsNullOrEmpty(phone_NumberTextBox.Text)) && (!long.TryParse(phone_NumberTextBox.Text, out phoneNumber)) 
+                || !phone_NumberTextBox.Text.StartsWith("8"))
+            {
+                MessageBox.Show("Некоректное значение номера телефона!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            string sqlUpdate = "UPDATE [dbo].[Client_Table] SET {0} WHERE [Client_ID] = @ClientId";
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.STO_dataBaseConnectionString);
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+
+            string sqlValues = "";
+
+            if (!String.IsNullOrEmpty(full_NameTextBox.Text))
+                sqlValues += "[Full_Name] = @FullName,";
+            if (!String.IsNullOrEmpty(phone_NumberTextBox.Text))
+                sqlValues += "[Phone_Number] = @PhoneNumber,";
+            if (!String.IsNullOrEmpty(genderComboBox.Text))
+                sqlValues += "[Gender] = @Gender,";
+
+            sqlValues = sqlValues.TrimEnd(',');
+
+            command.CommandText = String.Format(sqlUpdate, sqlValues);
+            if (!String.IsNullOrEmpty(full_NameTextBox.Text))
+                command.Parameters.AddWithValue("@FullName", full_NameTextBox.Text);
+            if (!String.IsNullOrEmpty(phone_NumberTextBox.Text))
+                command.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+            if (!String.IsNullOrEmpty(genderComboBox.Text))
+                command.Parameters.AddWithValue("@Gender", genderComboBox.Text);
+
+            command.Parameters.AddWithValue("@ClientId", id);
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ошибка выполнения запроса:\n" + err.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            connection.Close();
+            buttonSelectClientsClick(this, EventArgs.Empty);
+        }
+        void DeleteClient()
+        {
+            if (String.IsNullOrEmpty(textBoxClient_ID.Text))
+            {
+                MessageBox.Show("Обязательно укажите id Клиента данные которого необходимо удалить", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int id;
+            if (!int.TryParse(textBoxClient_ID.Text, out id))
+            {
+                MessageBox.Show("Некоректное значение id Клиента!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string sqlDelete = @"DELETE FROM [dbo].[Client_Table] WHERE [Client_ID] = @ClientId";
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.STO_dataBaseConnectionString);
+            connection.Open();
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = sqlDelete;
+            command.Parameters.AddWithValue("@ClientId", id);
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Number == 547)
+                {
+                    MessageBox.Show("Невозможно удалить клиента, так как он указан в таблице Auto_Table. Сначала удалите соответствующие записи из таблицы Auto_Table.",
+                        "Ошибка удаления", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Ошибка удаления");
+            }
+
+            connection.Close();
+            buttonSelectClientsClick(this, EventArgs.Empty);
+        }
+
     }
 }
